@@ -2,6 +2,8 @@
 
 > a reusable hook for creating actions that manipulate state. 
 
+For those of us who enjoyed working with [bindActionCreators](https://redux.js.org/api/bindactioncreators) from [Redux](https://redux.js.org) but could do without so much boiler plate code.
+
 ## Installation
 
 useActions requires a peer dependency of **React 16.8.0** or later
@@ -14,18 +16,15 @@ npm install --save er1cstotle/useActions#master
 
 <!-- This assumes that you’re using the [npm](https://npmjs.com) package manager with a module bundler like [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/) to consume [CommonJS](http://webpack.github.io/docs/commonjs.html) modules. -->
 
-## Why?
-
-For those of us who enjoyed working with [bindActionCreators](https://redux.js.org/api/bindactioncreators) from [Redux](https://redux.js.org) but could do without so much boiler plate code.
 
 ## Example
 ```js
 const actions = {
-  increment({ count }, by = 1) {
-    return { count: count + by };
+  increment({ count }) {
+    return { count: count + 1 };
   },
-  decrement({ count }, by = 1) {
-    return { count: count - by };
+  decrement({ count }) {
+    return { count: count - 1 };
   }
 };
 
@@ -36,11 +35,9 @@ const ActionsCounter = () => {
 
   return (
     <>
-      Count: {count}
+      <p>Count: {count}<p>
       <button onClick={() => increment()}>+</button>
       <button onClick={() => decrement()}>-</button>
-      <button onClick={() => increment(2)}>+2</button>
-      <button onClick={() => decrement(2)}>-2</button>
     </>
   );
 }
