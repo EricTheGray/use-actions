@@ -12,27 +12,13 @@ Not hosted on npm yet. For now the master branch will always have a working vers
 npm install --save er1cstotle/useActions#master
 ```
 
-
-This assumes that you’re using the [npm](https://npmjs.com) package manager with a module bundler like [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/) to consume [CommonJS](http://webpack.github.io/docs/commonjs.html) modules.
+<!-- This assumes that you’re using the [npm](https://npmjs.com) package manager with a module bundler like [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/) to consume [CommonJS](http://webpack.github.io/docs/commonjs.html) modules. -->
 
 ## Why?
 
-For those of us who enjoyed working with `bindActionCreators` in redux but could do without so much boiler plate code.
+For those of us who enjoyed working with [bindActionCreators](https://redux.js.org/api/bindactioncreators) from [Redux](https://redux.js.org) but could do without so much boiler plate code.
 
-```js
-const useActions = (actions, initial) => {
-  const [state, setState] = useState(initial);
-  const wired = {};
-
-  for (const action in actions) {
-    wired[action] = (...params) =>
-      setState((prev) => actions[action](prev, ...params));
-  }
-
-  return [state, wired];
-};
-```
-
+## Example
 ```js
 const actions = {
   increment({ count }, by = 1) {
@@ -60,4 +46,25 @@ const ActionsCounter = () => {
 }
 ```
 
+## Implementation
+
+Pulled directly from the  [source code](https://github.com/er1cstotle/use-actions/blob/master/index.js)
+
+```js
+const useActions = (actions, initial) => {
+  const [state, setState] = useState(initial);
+  const wired = {};
+
+  for (const action in actions) {
+    wired[action] = (...params) =>
+      setState((prev) => actions[action](prev, ...params));
+  }
+
+  return [state, wired];
+};
+```
+
+## License
+
+- See [LICENSE](https://github.com/er1cstotle/use-actions/blob/master/LICENSE)
 
