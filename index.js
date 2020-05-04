@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 const useActions = (actions, initial) => {
   const [state, setState] = useState(initial);
-  const wired = {};
+  const bound = {};
 
   for (const action in actions) {
-    wired[action] = (...params) =>
+    bound[action] = (...params) =>
       setState((prev) => actions[action](prev, ...params));
   }
 
-  return [state, wired];
+  return [state, bound];
 };
 
 export default useActions;
