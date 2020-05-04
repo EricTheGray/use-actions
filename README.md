@@ -2,22 +2,23 @@
 
 > a reusable hook for creating actions that manipulate state. 
 
-For those of us who enjoyed working with [bindActionCreators](https://redux.js.org/api/bindactioncreators) from [Redux](https://redux.js.org) but could do without so much boiler plate code.
+For those of us who enjoyed the feel of working with [bindActionCreators](https://redux.js.org/api/bindactioncreators) from [Redux](https://redux.js.org). This package aims to supply the benefits of actions without the need for a reducer.
 
 ## Installation
 
 useActions requires a peer dependency of **React 16.8.0** or later
 
-Not hosted on npm yet. For now the master branch will always have a working version of the package.
-
 ```
 npm install --save er1cstotle/useActions#master
 ```
 
+useActions is **not** hosted on npm yet. The master branch will always have a working version of the package.
+
+
 <!-- This assumes that you’re using the [npm](https://npmjs.com) package manager with a module bundler like [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/) to consume [CommonJS](http://webpack.github.io/docs/commonjs.html) modules. -->
 
 
-## Example
+## Example Usage
 ```js
 const actions = {
   increment({ count }) {
@@ -42,7 +43,7 @@ const ActionsCounter = () => {
   );
 }
 ```
-
+w
 ## Implementation
 
 Pulled directly from the  [source code](https://github.com/er1cstotle/use-actions/blob/master/index.js)
@@ -60,6 +61,11 @@ const useActions = (actions, initial) => {
   return [state, wired];
 };
 ```
+
+## Credits
+
+[Initial implementation](https://codesandbox.io/s/use-actions-yorxu?file=/src/App.js) provided by [@pyrolistical](https://github.com/Pyrolistical)
+
 
 ## License
 
