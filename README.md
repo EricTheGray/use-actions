@@ -46,19 +46,23 @@ const ActionsCounter = () => {
 w
 ## Implementation
 
-Pulled directly from the  [source code](https://github.com/er1cstotle/use-actions/blob/master/index.js)
+Pulled directly from the  [source code](https://github.com/EricTheGray/use-actions/blob/master/src/index.ts)
 
 ```js
-const useActions = (actions, initial) => {
+function useActions {
   const [state, setState] = useState(initial);
-  const wired = {};
 
-  for (const action in actions) {
-    wired[action] = (...params) =>
-      setState((prev) => actions[action](prev, ...params));
-  }
+  const wiredActions = Object.entries(actions).reduce((acc, [actionName, action]) => {
+    return {
+      ...acc,
+      // this is where the magic happens
+      [actionName]: (...params): void => {
+        setState((prev) => action(prev, ...params))
+      }
+    }
+  }, {})
 
-  return [state, wired];
+  return [state, wiredActions];
 };
 ```
 
